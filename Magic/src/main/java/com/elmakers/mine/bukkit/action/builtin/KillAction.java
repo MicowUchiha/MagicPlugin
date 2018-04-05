@@ -6,6 +6,7 @@ import org.bukkit.entity.Entity;
 import com.elmakers.mine.bukkit.action.BaseSpellAction;
 import com.elmakers.mine.bukkit.api.action.CastContext;
 import com.elmakers.mine.bukkit.api.spell.SpellResult;
+import com.elmakers.mine.bukkit.utility.DeprecatedUtils;
 
 public class KillAction extends BaseSpellAction
 {
@@ -24,7 +25,7 @@ public class KillAction extends BaseSpellAction
         }
         // Overkill to bypass protection
         context.registerModified(targetEntity);
-        targetEntity.damage(targetEntity.getMaxHealth() * 100);
+        targetEntity.damage(DeprecatedUtils.getMaxHealth(targetEntity) * 100);
         return SpellResult.CAST;
     }
 

@@ -17,7 +17,6 @@ import org.bukkit.entity.Horse;
 import org.bukkit.entity.Ocelot;
 import org.bukkit.entity.Projectile;
 import org.bukkit.entity.Rabbit;
-import org.bukkit.entity.Skeleton;
 import org.bukkit.entity.Villager;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.metadata.FixedMetadataValue;
@@ -210,10 +209,8 @@ public class SpawnEntityAction extends BaseSpellAction
         parameters.add("speed");
         parameters.add("reason");
         parameters.add("villager_profession");
-        parameters.add("skeleton_type");
         parameters.add("ocelot_type");
         parameters.add("rabbit_type");
-        parameters.add("horse_variant");
         parameters.add("horse_style");
         parameters.add("horse_color");
         parameters.add("color");
@@ -230,10 +227,6 @@ public class SpawnEntityAction extends BaseSpellAction
             for (CreatureSpawnEvent.SpawnReason type : CreatureSpawnEvent.SpawnReason.values()) {
                 examples.add(type.name().toLowerCase());
             }
-        } else if (parameterKey.equals("skeleton_type")) {
-            for (Skeleton.SkeletonType type : Skeleton.SkeletonType.values()) {
-                examples.add(type.name().toLowerCase());
-            }
         } else if (parameterKey.equals("ocelot_type")) {
             for (Ocelot.Type type : Ocelot.Type.values()) {
                 examples.add(type.name().toLowerCase());
@@ -244,10 +237,6 @@ public class SpawnEntityAction extends BaseSpellAction
             }
         } else if (parameterKey.equals("rabbit_type")) {
             for (Rabbit.Type type : Rabbit.Type.values()) {
-                examples.add(type.name().toLowerCase());
-            }
-        } else if (parameterKey.equals("horse_variant")) {
-            for (Horse.Variant type : Horse.Variant.values()) {
                 examples.add(type.name().toLowerCase());
             }
         } else if (parameterKey.equals("horse_style")) {

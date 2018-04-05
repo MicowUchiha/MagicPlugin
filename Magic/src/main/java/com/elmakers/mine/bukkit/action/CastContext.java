@@ -655,7 +655,7 @@ public class CastContext extends EffectContext implements com.elmakers.mine.bukk
     @Override
     public boolean isWater(Material mat)
     {
-        return (mat == Material.WATER || mat == Material.STATIONARY_WATER);
+        return mat == Material.WATER;
     }
 
     // This is primarily deprecated for API consistency
@@ -672,9 +672,7 @@ public class CastContext extends EffectContext implements com.elmakers.mine.bukk
     }
 
     private boolean isOkToStandOn0(Material material) {
-        return material != Material.AIR
-                && material != Material.LAVA
-                && material != Material.STATIONARY_LAVA;
+        return material != Material.AIR && material != Material.LAVA;
     }
 
     @Override

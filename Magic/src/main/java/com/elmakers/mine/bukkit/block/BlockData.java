@@ -126,8 +126,8 @@ public class BlockData extends MaterialAndData implements com.elmakers.mine.bukk
         }
     }
 
-    public BlockData(int x, int y, int z, String world, Material material, byte data) {
-        super(material, data);
+    public BlockData(int x, int y, int z, String world, Material material) {
+        super(material);
         this.location = new BlockVector(x, y, z);
         this.worldName = world;
     }
@@ -236,13 +236,11 @@ public class BlockData extends MaterialAndData implements com.elmakers.mine.bukk
     }
 
     @Override
-    @SuppressWarnings("deprecation")
     public String toString() {
-        return location.getBlockX() + "," + location.getBlockY() + "," + location.getBlockZ() + "," + worldName + "|" + getMaterial().getId() + ":" + getData();
+        return location.getBlockX() + "," + location.getBlockY() + "," + location.getBlockZ() + "," + worldName + "|" + getMaterial();
     }
 
     @Nullable
-    @SuppressWarnings("deprecation")
     public static BlockData fromString(String s) {
         BlockData result = null;
         if (s == null) return null;
@@ -253,10 +251,12 @@ public class BlockData extends MaterialAndData implements com.elmakers.mine.bukk
             int y = Integer.parseInt(locationPieces[1]);
             int z = Integer.parseInt(locationPieces[2]);
             String world = locationPieces[3];
-            String[] materialPieces = StringUtils.split(pieces[1], ':');
-            int materialId = Integer.parseInt(materialPieces[0]);
-            byte dataId = Byte.parseByte(materialPieces[1]);
-            return new BlockData(x, y, z, world, Material.getMaterial(materialId), dataId);
+            String materialName = pieces[1];
+            Material material = Material.getMaterial(materialName);
+            if (material == null) {
+                return null;
+            }
+            return new BlockData(x, y, z, world, material);
         } catch (Exception ignored) {
         }
 
