@@ -14,6 +14,7 @@
 
 ### Things still needing fixing
 
+ - Colorized brushes (blob, reflect) need fixing- use map functionality?
  - Config migration, a script to convert materials might be nice.
  - Towny integration is broken
 
