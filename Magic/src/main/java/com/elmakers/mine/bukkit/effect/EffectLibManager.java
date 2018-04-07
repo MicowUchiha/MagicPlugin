@@ -9,6 +9,7 @@ import javax.annotation.Nullable;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
+import org.bukkit.Particle;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.MemoryConfiguration;
 import org.bukkit.entity.Entity;
@@ -21,7 +22,6 @@ import com.elmakers.mine.bukkit.block.MaterialAndData;
 import de.slikey.effectlib.Effect;
 import de.slikey.effectlib.EffectManager;
 import de.slikey.effectlib.util.DynamicLocation;
-import de.slikey.effectlib.util.ParticleEffect;
 
 /**
  * Manages EffectLib integration
@@ -81,7 +81,7 @@ public class EffectLibManager {
 
         Effect effect = null;
         String effectClass = configuration.getString("class");
-        ParticleEffect particleEffect = player.overrideParticle(null);
+        Particle particleEffect = player.overrideParticle(null);
         String effectOverride = player.getParticleOverrideName();
         if (effectOverride != null && effectOverride.isEmpty()) effectOverride = null;
         String colorOverrideName = player.getColorOverrideName();
@@ -113,7 +113,6 @@ public class EffectLibManager {
                 MaterialAndData mat = player.getWorkingMaterial();
                 if (mat != null) {
                     effect.material = mat.getMaterial();
-                    effect.materialData = mat.getBlockData();
                 }
             }
         } catch (Throwable ex) {
